@@ -1,0 +1,79 @@
+﻿Build started 2015/12/27 14:33:58.
+     1>Project "D:\practice\third-party\readline_for_windows\.build\vs2013\readline.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\readline\compat /I..\..\readline /ZI /nologo /W3 /WX- /Od /Oy- /D HAVE_CONFIG_H /D PLATFORM=x86 /D BUILD_READLINE /D _CRT_SECURE_NO_WARNINGS /D _CRT_NONSTDC_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MT /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"obj\debug\x32\debug\readline\\" /Fd"obj\debug\x32\debug\readline\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\readline\readline\bind.c ..\..\readline\readline\callback.c ..\..\readline\readline\complete.c ..\..\readline\readline\display.c ..\..\readline\readline\histfile.c ..\..\readline\readline\input.c ..\..\readline\readline\isearch.c ..\..\readline\readline\kill.c ..\..\readline\readline\macro.c ..\..\readline\readline\mbutil.c ..\..\readline\readline\misc.c ..\..\readline\readline\nls.c ..\..\readline\readline\readline.c ..\..\readline\readline\rltty.c ..\..\readline\readline\search.c ..\..\readline\readline\signals.c ..\..\readline\readline\terminal.c ..\..\readline\readline\text.c ..\..\readline\readline\undo.c ..\..\readline\readline\util.c ..\..\readline\readline\vi_mode.c
+         vi_mode.c
+         util.c
+         undo.c
+         text.c
+         terminal.c
+         signals.c
+         search.c
+         rltty.c
+         readline.c
+         nls.c
+         misc.c
+         mbutil.c
+         macro.c
+         kill.c
+         isearch.c
+         input.c
+         histfile.c
+         display.c
+         complete.c
+         callback.c
+         Generating Code...
+         Compiling...
+         bind.c
+         Generating Code...
+       Lib:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"..\..\..\..\shared_lib\lib\readline_x86.lib" /NOLOGO obj\debug\x32\debug\readline\dirent.obj
+         obj\debug\x32\debug\readline\hooks.obj
+         obj\debug\x32\debug\readline\termcap.obj
+         obj\debug\x32\debug\readline\bind.obj
+         obj\debug\x32\debug\readline\callback.obj
+         obj\debug\x32\debug\readline\compat.obj
+         obj\debug\x32\debug\readline\complete.obj
+         obj\debug\x32\debug\readline\display.obj
+         obj\debug\x32\debug\readline\emacs_keymap.obj
+         obj\debug\x32\debug\readline\funmap.obj
+         obj\debug\x32\debug\readline\histexpand.obj
+         obj\debug\x32\debug\readline\histfile.obj
+         obj\debug\x32\debug\readline\history.obj
+         obj\debug\x32\debug\readline\histsearch.obj
+         obj\debug\x32\debug\readline\input.obj
+         obj\debug\x32\debug\readline\isearch.obj
+         obj\debug\x32\debug\readline\keymaps.obj
+         obj\debug\x32\debug\readline\kill.obj
+         obj\debug\x32\debug\readline\macro.obj
+         obj\debug\x32\debug\readline\mbutil.obj
+         obj\debug\x32\debug\readline\misc.obj
+         obj\debug\x32\debug\readline\nls.obj
+         obj\debug\x32\debug\readline\parens.obj
+         obj\debug\x32\debug\readline\readline.obj
+         obj\debug\x32\debug\readline\rltty.obj
+         obj\debug\x32\debug\readline\savestring.obj
+         obj\debug\x32\debug\readline\search.obj
+         obj\debug\x32\debug\readline\shell.obj
+         obj\debug\x32\debug\readline\signals.obj
+         obj\debug\x32\debug\readline\wcwidth.obj
+         obj\debug\x32\debug\readline\terminal.obj
+         obj\debug\x32\debug\readline\text.obj
+         obj\debug\x32\debug\readline\tilde.obj
+         obj\debug\x32\debug\readline\undo.obj
+         obj\debug\x32\debug\readline\util.obj
+         obj\debug\x32\debug\readline\vi_keymap.obj
+         obj\debug\x32\debug\readline\vi_mode.obj
+         obj\debug\x32\debug\readline\xmalloc.obj
+     1>keymaps.obj : warning LNK4006: _vi_insertion_keymap already defined in vi_keymap.obj; second definition ignored
+     1>keymaps.obj : warning LNK4006: _vi_movement_keymap already defined in vi_keymap.obj; second definition ignored
+     1>emacs_keymap.obj : warning LNK4006: _emacs_standard_keymap already defined in keymaps.obj; second definition ignored
+     1>emacs_keymap.obj : warning LNK4006: _emacs_meta_keymap already defined in keymaps.obj; second definition ignored
+     1>emacs_keymap.obj : warning LNK4006: _emacs_ctlx_keymap already defined in keymaps.obj; second definition ignored
+     1>emacs_keymap.obj : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
+         readline.vcxproj -> D:\practice\third-party\readline_for_windows\.build\vs2013\..\..\..\..\shared_lib\lib\readline_x86.lib
+     1>Done Building Project "D:\practice\third-party\readline_for_windows\.build\vs2013\readline.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.68

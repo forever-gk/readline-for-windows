@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="compat">
+      <UniqueIdentifier>{A909E4F6-95AB-0ECD-7E66-22216AA7951D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="readline">
+      <UniqueIdentifier>{E90B51F9-D5D8-AB04-FEF1-99ACEA1DE192}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\readline\compat\config.h">
+      <Filter>compat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\compat\dirent.h">
+      <Filter>compat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\compat\hooks.h">
+      <Filter>compat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\ansi_stdlib.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\chardefs.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\histlib.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\history.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\keymaps.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\posixdir.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\posixjmp.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\posixselect.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\posixstat.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\readline.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\rlconf.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\rldefs.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\rlmbutil.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\rlprivate.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\rlshell.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\rlstdc.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\rltty.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\rltypedefs.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\rlwinsize.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\tcap.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\tilde.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\readline\readline\xmalloc.h">
+      <Filter>readline</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\readline\compat\dirent.c">
+      <Filter>compat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\compat\hooks.c">
+      <Filter>compat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\compat\termcap.c">
+      <Filter>compat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\bind.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\callback.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\compat.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\complete.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\display.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\funmap.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\histexpand.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\histfile.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\history.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\histsearch.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\input.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\isearch.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\keymaps.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\kill.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\macro.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\mbutil.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\misc.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\nls.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\parens.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\readline.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\rltty.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\savestring.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\search.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\shell.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\signals.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\terminal.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\text.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\tilde.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\undo.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\util.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\vi_mode.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\xmalloc.c">
+      <Filter>readline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\readline\readline\emacs_keymap.c" />
+    <ClCompile Include="..\..\readline\readline\vi_keymap.c" />
+    <ClCompile Include="..\..\readline\readline\support\wcwidth.c" />
+  </ItemGroup>
+</Project>

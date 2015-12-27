@@ -4,19 +4,19 @@
 
    This file is part of GNU Bash, the Bourne Again SHell.
 
-   Bash is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
+   Bash is free software; you can redistribute it and/or modify it
+   under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2, or (at your option)
+   any later version.
 
-   Bash is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+   Bash is distributed in the hope that it will be useful, but WITHOUT
+   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+   or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public
+   License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with Bash.  If not, see <http://www.gnu.org/licenses/>.
-*/
+   along with Bash; see the file COPYING.  If not, write to the Free
+   Software Foundation, 59 Temple Place, Suite 330, Boston, MA 02111 USA. */
 
 /* This file should be included instead of <dirent.h> or <sys/dir.h>. */
 
@@ -30,6 +30,7 @@
 #  else
 #    define D_NAMLEN(d)   (strlen ((d)->d_name))
 #  endif /* !HAVE_STRUCT_DIRENT_D_NAMLEN */
+#  define FILENAME(d)   ((d)->d_name)
 #else
 #  if defined (HAVE_SYS_NDIR_H)
 #    include <sys/ndir.h>
@@ -44,7 +45,16 @@
 #    define dirent direct
 #  endif /* !dirent */
 #  define D_NAMLEN(d)   ((d)->d_namlen)
+#  define FILENAME(d)   ((d)->d_name)
 #endif /* !HAVE_DIRENT_H */
+
+#if defined (_WIN32)
+# undef FILENAME
+# define FILENAME(d) (d).cFileName
+# define closedir(dir) FindClose (dir)
+# undef D_NAMLEN
+# define D_NAMLEN(d) strlen (d.cFileName)
+#endif
 
 #if defined (HAVE_STRUCT_DIRENT_D_INO) && !defined (HAVE_STRUCT_DIRENT_D_FILENO)
 #  define d_fileno d_ino

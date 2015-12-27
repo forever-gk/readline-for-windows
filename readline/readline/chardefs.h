@@ -1,23 +1,24 @@
 /* chardefs.h -- Character definitions for readline. */
 
-/* Copyright (C) 1994-2009 Free Software Foundation, Inc.
+/* Copyright (C) 1994 Free Software Foundation, Inc.
 
-   This file is part of the GNU Readline Library (Readline), a library
-   for reading lines of text with interactive input and history editing.
+   This file is part of the GNU Readline Library, a library for
+   reading lines of text with interactive input and history editing.
 
-   Readline is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
+   The GNU Readline Library is free software; you can redistribute it
+   and/or modify it under the terms of the GNU General Public License
+   as published by the Free Software Foundation; either version 2, or
    (at your option) any later version.
 
-   Readline is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   The GNU Readline Library is distributed in the hope that it will be
+   useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+   of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
 
-   You should have received a copy of the GNU General Public License
-   along with Readline.  If not, see <http://www.gnu.org/licenses/>.
-*/
+   The GNU General Public License is often shipped with GNU software, and
+   is generally kept in a file called COPYING or LICENSE.  If you do not
+   have a copy of the license, write to the Free Software Foundation,
+   59 Temple Place, Suite 330, Boston, MA 02111 USA. */
 
 #ifndef _CHARDEFS_H_
 #define _CHARDEFS_H_
@@ -52,6 +53,11 @@
 /* Some character stuff. */
 #define control_character_threshold 0x020   /* Smaller than this is control. */
 #define control_character_mask 0x1f	    /* 0x20 - 1 */
+#define control_character_bit 0x40	    /* 0x000000, must be off. */
+
+/* Some character stuff. */
+#define control_character_threshold 0x020   /* Smaller than this is control. */
+#define control_character_mask 0x1f         /* 0x20 - 1 */
 #define meta_character_threshold 0x07f	    /* Larger than this is Meta. */
 #define control_character_bit 0x40	    /* 0x000000, must be off. */
 #define meta_character_bit 0x080	    /* x0000000, must be on. */
@@ -84,8 +90,6 @@
 
 /* Some systems define these; we want our definitions. */
 #undef ISPRINT
-
-/* Beware:  these only work with single-byte ASCII characters. */
 
 #define ISALNUM(c)	(IN_CTYPE_DOMAIN (c) && isalnum (c))
 #define ISALPHA(c)	(IN_CTYPE_DOMAIN (c) && isalpha (c))

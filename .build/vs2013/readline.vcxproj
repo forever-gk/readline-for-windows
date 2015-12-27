@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|Win32">
+      <Configuration>debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|Win32">
+      <Configuration>release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E90B51F9-D5D8-AB04-FEF1-99ACEA1DE192}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>readline</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
+    <OutDir>..\..\..\..\shared_lib\lib\</OutDir>
+    <IntDir>obj\debug\x32\debug\readline\</IntDir>
+    <TargetName>readline_x86</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <OutDir>bin\debug\</OutDir>
+    <IntDir>obj\debug\x64\debug\readline\</IntDir>
+    <TargetName>readline_x64</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <OutDir>bin\release\</OutDir>
+    <IntDir>obj\release\x32\release\readline\</IntDir>
+    <TargetName>readline_x86</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <OutDir>bin\release\</OutDir>
+    <IntDir>obj\release\x64\release\readline\</IntDir>
+    <TargetName>readline_x64</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;PLATFORM=x86;BUILD_READLINE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\readline\compat;..\..\readline;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;HANDLE_MULTIBYTE;CLINK_VERSION=AS_STR(DEV);CLINK_COMMIT=AS_STR(?);CLINK_VER_MAJOR=0;CLINK_VER_MINOR=0;CLINK_VER_POINT=0;CLINK_VER_STAMP=28404;STATIC_GETOPT;PLATFORM=x64;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;BUILD_READLINE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\readline\compat;..\..\readline;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;HANDLE_MULTIBYTE;CLINK_VERSION=AS_STR(DEV);CLINK_COMMIT=AS_STR(?);CLINK_VER_MAJOR=0;CLINK_VER_MINOR=0;CLINK_VER_POINT=0;CLINK_VER_STAMP=28404;STATIC_GETOPT;PLATFORM=x86;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;BUILD_READLINE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\readline\compat;..\..\readline;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>MinSpace</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;HANDLE_MULTIBYTE;CLINK_VERSION=AS_STR(DEV);CLINK_COMMIT=AS_STR(?);CLINK_VER_MAJOR=0;CLINK_VER_MINOR=0;CLINK_VER_POINT=0;CLINK_VER_STAMP=28404;STATIC_GETOPT;PLATFORM=x64;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;BUILD_READLINE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\readline\compat;..\..\readline;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>MinSpace</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\readline\compat\config.h" />
+    <ClInclude Include="..\..\readline\compat\dirent.h" />
+    <ClInclude Include="..\..\readline\compat\hooks.h" />
+    <ClInclude Include="..\..\readline\readline\ansi_stdlib.h" />
+    <ClInclude Include="..\..\readline\readline\chardefs.h" />
+    <ClInclude Include="..\..\readline\readline\histlib.h" />
+    <ClInclude Include="..\..\readline\readline\history.h" />
+    <ClInclude Include="..\..\readline\readline\keymaps.h" />
+    <ClInclude Include="..\..\readline\readline\posixdir.h" />
+    <ClInclude Include="..\..\readline\readline\posixjmp.h" />
+    <ClInclude Include="..\..\readline\readline\posixselect.h" />
+    <ClInclude Include="..\..\readline\readline\posixstat.h" />
+    <ClInclude Include="..\..\readline\readline\readline.h" />
+    <ClInclude Include="..\..\readline\readline\rlconf.h" />
+    <ClInclude Include="..\..\readline\readline\rldefs.h" />
+    <ClInclude Include="..\..\readline\readline\rlmbutil.h" />
+    <ClInclude Include="..\..\readline\readline\rlprivate.h" />
+    <ClInclude Include="..\..\readline\readline\rlshell.h" />
+    <ClInclude Include="..\..\readline\readline\rlstdc.h" />
+    <ClInclude Include="..\..\readline\readline\rltty.h" />
+    <ClInclude Include="..\..\readline\readline\rltypedefs.h" />
+    <ClInclude Include="..\..\readline\readline\rlwinsize.h" />
+    <ClInclude Include="..\..\readline\readline\tcap.h" />
+    <ClInclude Include="..\..\readline\readline\tilde.h" />
+    <ClInclude Include="..\..\readline\readline\xmalloc.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\readline\compat\dirent.c" />
+    <ClCompile Include="..\..\readline\compat\hooks.c" />
+    <ClCompile Include="..\..\readline\compat\termcap.c" />
+    <ClCompile Include="..\..\readline\readline\bind.c" />
+    <ClCompile Include="..\..\readline\readline\callback.c" />
+    <ClCompile Include="..\..\readline\readline\compat.c" />
+    <ClCompile Include="..\..\readline\readline\complete.c" />
+    <ClCompile Include="..\..\readline\readline\display.c" />
+    <ClCompile Include="..\..\readline\readline\emacs_keymap.c" />
+    <ClCompile Include="..\..\readline\readline\funmap.c" />
+    <ClCompile Include="..\..\readline\readline\histexpand.c" />
+    <ClCompile Include="..\..\readline\readline\histfile.c" />
+    <ClCompile Include="..\..\readline\readline\history.c" />
+    <ClCompile Include="..\..\readline\readline\histsearch.c" />
+    <ClCompile Include="..\..\readline\readline\input.c" />
+    <ClCompile Include="..\..\readline\readline\isearch.c" />
+    <ClCompile Include="..\..\readline\readline\keymaps.c" />
+    <ClCompile Include="..\..\readline\readline\kill.c" />
+    <ClCompile Include="..\..\readline\readline\macro.c" />
+    <ClCompile Include="..\..\readline\readline\mbutil.c" />
+    <ClCompile Include="..\..\readline\readline\misc.c" />
+    <ClCompile Include="..\..\readline\readline\nls.c" />
+    <ClCompile Include="..\..\readline\readline\parens.c" />
+    <ClCompile Include="..\..\readline\readline\readline.c" />
+    <ClCompile Include="..\..\readline\readline\rltty.c" />
+    <ClCompile Include="..\..\readline\readline\savestring.c" />
+    <ClCompile Include="..\..\readline\readline\search.c" />
+    <ClCompile Include="..\..\readline\readline\shell.c" />
+    <ClCompile Include="..\..\readline\readline\signals.c" />
+    <ClCompile Include="..\..\readline\readline\support\wcwidth.c" />
+    <ClCompile Include="..\..\readline\readline\terminal.c" />
+    <ClCompile Include="..\..\readline\readline\text.c" />
+    <ClCompile Include="..\..\readline\readline\tilde.c" />
+    <ClCompile Include="..\..\readline\readline\undo.c" />
+    <ClCompile Include="..\..\readline\readline\util.c" />
+    <ClCompile Include="..\..\readline\readline\vi_keymap.c" />
+    <ClCompile Include="..\..\readline\readline\vi_mode.c" />
+    <ClCompile Include="..\..\readline\readline\xmalloc.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

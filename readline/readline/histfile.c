@@ -1,23 +1,24 @@
 /* histfile.c - functions to manipulate the history file. */
 
-/* Copyright (C) 1989-2010 Free Software Foundation, Inc.
+/* Copyright (C) 1989-2003 Free Software Foundation, Inc.
 
-   This file contains the GNU History Library (History), a set of
+   This file contains the GNU History Library (the Library), a set of
    routines for managing the text of previously typed lines.
 
-   History is free software: you can redistribute it and/or modify
+   The Library is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
+   the Free Software Foundation; either version 2, or (at your option)
+   any later version.
 
-   History is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+   The Library is distributed in the hope that it will be useful, but
+   WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   General Public License for more details.
 
-   You should have received a copy of the GNU General Public License
-   along with History.  If not, see <http://www.gnu.org/licenses/>.
-*/
+   The GNU General Public License is often shipped with GNU software, and
+   is generally kept in a file called COPYING or LICENSE.  If you do not
+   have a copy of the license, write to the Free Software Foundation,
+   59 Temple Place, Suite 330, Boston, MA 02111 USA. */
 
 /* The goal is to make the implementation transparent, so that you
    don't have to know what data types are used, just what functions
@@ -52,9 +53,7 @@
 #  include <unistd.h>
 #endif
 
-#include <ctype.h>
-
-#if defined (__EMX__)
+#if defined (__EMX__) || defined (__CYGWIN__) || defined (__MINW32__)
 #  undef HAVE_MMAP
 #endif
 
@@ -75,18 +74,22 @@
 
 #endif /* HISTORY_USE_MMAP */
 
+#ifdef _WIN32
+#include <io.h>
+#endif
+
 /* If we're compiling for __EMX__ (OS/2) or __CYGWIN__ (cygwin32 environment
    on win 95/98/nt), we want to open files with O_BINARY mode so that there
    is no \n -> \r\n conversion performed.  On other systems, we don't want to
    mess around with O_BINARY at all, so we ensure that it's defined to 0. */
-#if defined (__EMX__) || defined (__CYGWIN__)
+#if defined (__EMX__) || defined (__CYGWIN__) || defined (_WIN32)
 #  ifndef O_BINARY
 #    define O_BINARY 0
 #  endif
-#else /* !__EMX__ && !__CYGWIN__ */
+#else /* !__EMX__ && !__CYGWIN__ && !_WIN32 */
 #  undef O_BINARY
 #  define O_BINARY 0
-#endif /* !__EMX__ && !__CYGWIN__ */
+#endif /* !__EMX__ && !__CYGWIN__ && !_WIN32 */
 
 #include <errno.h>
 #if !defined (errno)
@@ -104,7 +107,11 @@ int history_write_timestamps = 0;
 
 /* Does S look like the beginning of a history timestamp entry?  Placeholder
    for more extensive tests. */
-#define HIST_TIMESTAMP_START(s)		(*(s) == history_comment_char && isdigit ((s)[1]) )
+#define HIST_TIMESTAMP_START(s)		(*(s) == history_comment_char)
+
+#ifdef _WIN32
+#include "rldefs.h"
+#endif
 
 /* Return the string that should be used in the place of this
    filename.  This only matters when you don't specify the
@@ -126,12 +133,14 @@ history_filename (filename)
 
   if (home == 0)
     {
-#if 0
+#if defined (_WIN32) && defined (INITFILES_IN_REGISTRY)
+      return_val = _rl_get_user_registry_string (READLINE_REGKEY, HISTFILE_REGVAL);
+      if (return_val)
+        return (return_val);
+      free (return_val);
+#endif	/* _WIN32 ... */
       home = ".";
       home_len = 1;
-#else
-      return (NULL);
-#endif
     }
   else
     home_len = strlen (home);
@@ -183,7 +192,7 @@ read_history_range (filename, from, to)
 
   buffer = last_ts = (char *)NULL;
   input = history_filename (filename);
-  file = input ? open (input, O_RDONLY|O_BINARY, 0666) : -1;
+  file = open (input, O_RDONLY|O_BINARY, 0666);
 
   if ((file < 0) || (fstat (file, &finfo) == -1))
     goto error_and_exit;
@@ -261,11 +270,7 @@ read_history_range (filename, from, to)
   for (line_end = line_start; line_end < bufend; line_end++)
     if (*line_end == '\n')
       {
-	/* Change to allow Windows-like \r\n end of line delimiter. */
-	if (line_end > line_start && line_end[-1] == '\r')
-	  line_end[-1] = '\0';
-	else
-	  *line_end = '\0';
+	*line_end = '\0';
 
 	if (*line_start)
 	  {
@@ -318,7 +323,7 @@ history_truncate_file (fname, lines)
 
   buffer = (char *)NULL;
   filename = history_filename (fname);
-  file = filename ? open (filename, O_RDONLY|O_BINARY, 0666) : -1;
+  file = open (filename, O_RDONLY|O_BINARY, 0666);
   rv = 0;
 
   /* Don't try to truncate non-regular files. */
@@ -417,7 +422,7 @@ history_truncate_file (fname, lines)
 
   FREE (buffer);
 
-  xfree (filename);
+  free (filename);
   return rv;
 }
 
@@ -440,10 +445,9 @@ history_do_write (filename, nelements, overwrite)
   mode = overwrite ? O_WRONLY|O_CREAT|O_TRUNC|O_BINARY : O_WRONLY|O_APPEND|O_BINARY;
 #endif
   output = history_filename (filename);
-  file = output ? open (output, mode, 0600) : -1;
   rv = 0;
 
-  if (file == -1)
+  if ((file = open (output, mode, 0600)) == -1)
     {
       FREE (output);
       return (errno);
@@ -520,7 +524,7 @@ mmap_error:
 #else
     if (write (file, buffer, buffer_size) < 0)
       rv = errno;
-    xfree (buffer);
+    free (buffer);
 #endif
   }
 

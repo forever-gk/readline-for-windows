@@ -2,24 +2,26 @@
    for readline.  This should be included after any files that define
    system-specific constants like _POSIX_VERSION or USG. */
 
-/* Copyright (C) 1987-2009 Free Software Foundation, Inc.
+/* Copyright (C) 1987,1989 Free Software Foundation, Inc.
 
-   This file is part of the GNU Readline Library (Readline), a library
-   for reading lines of text with interactive input and history editing.      
+   This file contains the Readline Library (the Library), a set of
+   routines for providing Emacs style line input to programs that ask
+   for it.
 
-   Readline is free software: you can redistribute it and/or modify
+   The Library is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
+   the Free Software Foundation; either version 2, or (at your option)
+   any later version.
 
-   Readline is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+   The Library is distributed in the hope that it will be useful, but
+   WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   General Public License for more details.
 
-   You should have received a copy of the GNU General Public License
-   along with Readline.  If not, see <http://www.gnu.org/licenses/>.
-*/
+   The GNU General Public License is often shipped with GNU software, and
+   is generally kept in a file called COPYING or LICENSE.  If you do not
+   have a copy of the license, write to the Free Software Foundation,
+   59 Temple Place, Suite 330, Boston, MA 02111 USA. */
 
 #if !defined (_RLDEFS_H_)
 #define _RLDEFS_H_
@@ -30,25 +32,13 @@
 
 #include "rlstdc.h"
 
-#if defined (STRCOLL_BROKEN)
-#  undef HAVE_STRCOLL
-#endif
-
 #if defined (_POSIX_VERSION) && !defined (TERMIOS_MISSING)
 #  define TERMIOS_TTY_DRIVER
 #else
 #  if defined (HAVE_TERMIO_H)
 #    define TERMIO_TTY_DRIVER
 #  else
-/* begin_clink_change
- * Ensure NO_TTY_DRIVER is defined
- */
-#    if !defined (__MINGW32__) && 0
-/* end_clink_change */
-#      define NEW_TTY_DRIVER
-#    else
-#      define NO_TTY_DRIVER
-#    endif
+#    define NEW_TTY_DRIVER
 #  endif
 #endif
 
@@ -82,15 +72,18 @@ extern char *strchr (), *strrchr ();
 #if defined (HAVE_STRCASECMP)
 #define _rl_stricmp strcasecmp
 #define _rl_strnicmp strncasecmp
+#elif defined (_WIN32)
+#define _rl_stricmp stricmp
+#define _rl_strnicmp strnicmp
 #else
-extern int _rl_stricmp PARAMS((char *, char *));
-extern int _rl_strnicmp PARAMS((char *, char *, int));
+READLINE_DLL_IMPEXP int _rl_stricmp PARAMS((char *, char *));
+READLINE_DLL_IMPEXP int _rl_strnicmp PARAMS((char *, char *, int));
 #endif
 
 #if defined (HAVE_STRPBRK) && !defined (HAVE_MULTIBYTE)
 #  define _rl_strpbrk(a,b)	strpbrk((a),(b))
 #else
-extern char *_rl_strpbrk PARAMS((const char *, const char *));
+READLINE_DLL_IMPEXP char *_rl_strpbrk PARAMS((const char *, const char *));
 #endif
 
 #if !defined (emacs_mode)
@@ -160,6 +153,30 @@ extern char *_rl_strpbrk PARAMS((const char *, const char *));
 #  define SWAP(s, e)  do { int t; t = s; s = e; e = t; } while (0)
 #endif
 
+#if defined (_WIN32)
+#define WAIT_FOR_INPUT 200	/* milliseconds to suspend maximally 
+ 				   when waiting for input */
+#define FOR_INPUT	1	/* flags for open state of the console  */
+#define FOR_OUTPUT	2
+#define INITIALIZED	4
+
+/* undefine this when readline / history should not look into the registry
+   for the path to their init files  */
+#define INITFILES_IN_REGISTRY 1
+ 
+#if defined (INITFILES_IN_REGISTRY)
+/* We also try to get the .inputrc and .history file paths from the registry,
+   define what to look for */
+#define READLINE_REGKEY	"Software\\Free Software Foundation\\libreadline"
+#define INPUTRC_REGVAL	"inputrc-file"
+#define HISTFILE_REGVAL	"history-file"
+
+extern char *_rl_get_user_registry_string (char *keyName, char* valName);
+
+#endif
+ 
+#endif	/* _WIN32  */
+ 
 /* CONFIGURATION SECTION */
 #include "rlconf.h"
 
